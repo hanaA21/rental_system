@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Schedule an Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Schedule an Appointment</h1>
+<form action="/appointments/save" method="post">
+    <label for="customerName">Your Name:</label>
+    <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required>
+
+    <label for="phone">Your Phone:</label>
+    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="appointmentDate">Appointment Date:</label>
+    <input type="datetime-local" id="appointmentDate" name="appointmentDate" required>
+
+    <button type="submit">Schedule Appointment</button>
+</form>
+<br>
+<div>
+    <a th:href="@{/property-list}">return</a>
+</div>
+</body>
+</html>

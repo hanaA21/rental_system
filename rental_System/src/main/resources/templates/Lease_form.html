@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Lease</title>
+</head>
+<body>
+<h1>Create Lease</h1>
+<form th:action="@{/leases/save}" method="post">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required /><br />
+
+    <label for="leaseTerm">Lease Term (Months):</label>
+    <input type="number" id="leaseTerm" name="leaseTerm" min="1" required /><br />
+
+    <label for="customer">Customer:</label>
+    <select id="customer" name="customer.id" required>
+        <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+    </select><br />
+
+    <label for="property">Property:</label>
+    <select id="property" name="property.id" required>
+        <option th:each="property : ${properties}" th:value="${property.id}" th:text="${property.propertyNo}"></option>
+    </select><br />
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
