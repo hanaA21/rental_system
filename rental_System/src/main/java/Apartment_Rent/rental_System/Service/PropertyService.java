@@ -36,7 +36,7 @@ public class PropertyService {
                 .orElseThrow(() -> new IllegalArgumentException("Property not found"));
 
         // Update fields
-        existingProperty.setPropertyNo(updatedProperty.getPropertyNo());
+        existingProperty.setType(updatedProperty.getType());
         existingProperty.setAddress(updatedProperty.getAddress());
         existingProperty.setRent(updatedProperty.getRent());
 

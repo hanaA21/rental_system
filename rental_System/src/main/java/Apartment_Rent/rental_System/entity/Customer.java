@@ -2,17 +2,31 @@ package Apartment_Rent.rental_System.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
+@Table(name="customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+@Column(name="name")
     private String name;
-
+@Column(name="phone")
     private String phone;
-
+@Column(name="email")
     private String email;
+private int customer_id;
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Appointment> appointments;
 
     // Default constructor
     public Customer() {}

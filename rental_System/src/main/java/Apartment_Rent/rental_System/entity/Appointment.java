@@ -6,19 +6,20 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="appointment")
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+@Column(name="appointment_date")
     private LocalDate appointmentDate;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id",nullable = false)
+    @JoinColumn(name="customer_id", referencedColumnName = "id")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "agent_id",nullable = false)
+    @JoinColumn(name = "agent_id",referencedColumnName = "id")
     private Agent agent;
 
     // Getters and Setters

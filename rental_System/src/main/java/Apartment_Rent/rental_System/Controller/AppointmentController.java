@@ -1,6 +1,5 @@
 package Apartment_Rent.rental_System.Controller;
 
-import Apartment_Rent.rental_System.Service.AgentService;
 import Apartment_Rent.rental_System.Service.AppointmentService;
 import Apartment_Rent.rental_System.Service.CustomerService;
 import Apartment_Rent.rental_System.Service.PropertyService;
@@ -33,14 +32,14 @@ public class AppointmentController {
         @GetMapping
         public String listAppointments(Model model) {
             model.addAttribute("appointments", appointmentService.getAllAppointments());
-            return "appointment-list";
+            return "appointment_list";
         }
 
         // Show form to create a new appointment
         @GetMapping("/new")
         public String showAppointmentForm(Model model) {
             model.addAttribute("appointment", new Appointment());
-            return "appointment-form"; // Refers to appointment-form.html
+            return "appointment_form"; // Refers to appointment-form.html
         }
 
         // Save appointment

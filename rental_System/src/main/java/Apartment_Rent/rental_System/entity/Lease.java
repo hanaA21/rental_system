@@ -5,12 +5,16 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="lease")
 public class Lease {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name= "lease_term")
     private int leaseTerm; // Lease term in months
+    @Column(name="start_date")
     private LocalDate startDate;
+    @Column(name="end_date")
     private LocalDate endDate;
 
     public Lease( int leaseTerm, LocalDate startDate, LocalDate endDate, String status,Customer customer,Property property) {
@@ -25,11 +29,11 @@ public class Lease {
     private String status; // Active or Expired
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false) // Foreign key to Customer table
+    @JoinColumn(name = "customer_id", referencedColumnName = "id") // Foreign key to Customer table
     private Customer customer; // The customer who owns this lease
 
     @ManyToOne
-    @JoinColumn(name = "property_id", nullable = false) // Foreign key to Property table
+    @JoinColumn(name = "property_id", referencedColumnName = "id") // Foreign key to Property table
     private Property property; // The property leased
 
     // No-arg constructor

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="agent : ${agents}">
+        <td th:text="${agent.agentName}"></td>
+        <td th:text="${agent.phone}"></td>
+        <td th:text="${agent.agentEmail}"></td>
+
+<!--        <td>-->
+<!--            <a th:href="@{'/leases/delete/' + ${lease.id}}">Delete</a>-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property List</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Address</th>
+        <th>Rent</th>
+        <th>Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="property : ${properties}">
+        <td th:text="${property.address}"></td>
+        <td th:text="${property.rent}"></td>
+        <td th:text="${property.type}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

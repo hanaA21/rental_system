@@ -5,16 +5,29 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="agent")
 public class Agent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="agent_name")
     private String agentName;  // Name of the agent
+    @Column(name="phone")
     private String phone; // Phone number of the agent
+    @Column(name="agent_email")
     private String agentEmail; // Email address of the agent
 
-    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
+    public int getAgent_id() {
+        return agent_id;
+    }
+
+    public void setAgent_id(int agent_id) {
+        this.agent_id = agent_id;
+    }
+
+    private int agent_id;
+  @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Appointment> appointments; // List of appointments handled by the agent
 
     // No-arg constructor

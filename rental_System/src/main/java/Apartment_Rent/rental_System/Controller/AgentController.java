@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/agents")
 public class AgentController {
@@ -19,8 +21,12 @@ public class AgentController {
 
     @GetMapping
     public String listAgents(Model model) {
-        model.addAttribute("agents", agentService.getAllAgents());
-        return "agent-list";
+        List<Agent> agents = agentService.getAllAgents();
+        for (var agent : agents) {
+            System.out.println(agent);
+        }
+        model.addAttribute("agents", agents);
+        return "agent_form";
     }
 
     @PostMapping("/login")
@@ -28,23 +34,23 @@ public class AgentController {
         Agent agent = agentService.getAgentByNamePhoneAndEmail(name, phone, email);
         if (agent != null) {
             // Redirect to the property form page if login is successful
-            return "redirect:/properties/new";
+            return "redirect:/agents/new";
         } else {
             model.addAttribute("error", "No account found. Please add yourself as a new agent.");
-            return "agent-form"; // Return to the agent form with an error message
+            return "agent_list"; // Return to the agent form with an error message
         }
     }
 
     @GetMapping("/new")
     public String showAddAgentForm(Model model) {
         model.addAttribute("agent", new Agent());
-        return "agent-form";
+        return "agent_form";
     }
     @GetMapping("/edit/{id}")
     public String showEditAgentForm(@PathVariable Long id, Model model) {
         Agent agent = agentService.getAgentById(id);
         model.addAttribute("agent", agent);
-        return "agent-form"; // Refers to agent-form.html
+        return "agent_form"; // Refers to agent-form.html
     }
 
     @PostMapping("/save")

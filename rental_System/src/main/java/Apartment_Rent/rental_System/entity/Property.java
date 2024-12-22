@@ -5,36 +5,39 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="property")
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long propertyId;
-
-    private String propertyNo; // Property number or identifier
+    private Long id;
+    @Column(name="type")
+    private String type; // Property number or identifier
+    @Column(name="address")
     private String address;   // Property address
+    @Column(name="rent")
     private int rent;         // Monthly rent
 
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
     private List<Lease> leases; // List of leases associated with the property
 
-    // No-arg constructor
+    // No-arg constructorlease
     public Property() {}
 
     // Getters and Setters
-    public Long getPropertyId() {
-        return propertyId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPropertyId(Long propertyId) {
-        this.propertyId = propertyId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPropertyNo() {
-        return propertyNo;
+    public String getType() {
+        return type;
     }
 
-    public void setPropertyNo(String propertyNo) {
-        this.propertyNo = propertyNo;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getAddress() {

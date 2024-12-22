@@ -7,7 +7,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: url('/static/apt1.jpg') no-repeat center center fixed;
+            background: url('/apt1.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
         }
@@ -50,9 +50,27 @@
             border-radius: 5px;
             text-align: center;
             margin-top: 1rem;
+            font-size: 1rem;
         }
 
         .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            display: block;
+            width: 80%;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0.5rem auto;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
             background-color: #0056b3;
         }
     </style>
@@ -75,8 +93,11 @@
 
         <button type="submit" class="btn">Save Property</button>
     </form>
-    <div style="text-align: center; margin-top: 1rem;">
-        <a th:href="@{/lease/form}" class="btn btn-secondary">show Lease</a>
+    <div style="margin-top: 1rem;">
+        <a th:href="@{/leases}" class="btn-secondary">Leases</a>
+    </div>
+    <div style="margin-top: 1rem;">
+        <a th:href="@{/customers}" class="btn-secondary">View Appointments/customer info</a>
     </div>
 </div>
 </body>

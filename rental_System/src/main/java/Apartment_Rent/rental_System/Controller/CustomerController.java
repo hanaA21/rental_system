@@ -18,7 +18,7 @@ public class CustomerController {
     @GetMapping
     public String listCustomers(Model model) {
         model.addAttribute("customers", customerService.getAllCustomers());
-        return "customer-list";
+        return "customer_list";
     }
 
     @PostMapping("/save")

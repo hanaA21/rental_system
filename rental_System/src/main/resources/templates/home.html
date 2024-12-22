@@ -7,7 +7,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: url('/static/apt.jpg') no-repeat center center fixed;
+            background: url('/apt.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             text-align: center;
@@ -25,25 +25,26 @@
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-
-        .links {
+        .buttons {
             margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* Increased gap for more space */
         }
 
-        .links a {
+        .btn {
             display: inline-block;
-            margin: 0.5rem;
             padding: 1rem 2rem;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2rem;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
-        .links a:hover {
-            background-color: rgba(0, 0, 0, 0.9);
+        .btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -51,13 +52,11 @@
 <div class="container">
     <h1>Welcome to the Apartment Rental System</h1>
     <p>Your one-stop solution for finding and renting apartments.</p>
-    <div class="links">
-        <!-- Show Available Apartments -->
-        <link th:href="@{/properties/new}">Show Available s</link>
-        <a th:href="@{/test}"> Test Link</a>
-<!--        <a th:href="@{/items/edit/{id}(id=${item.id})}">Edit</a>-->
-        <!-- Make an Appointment -->
-        <a th:href="@{/appointments/new}">Make an Appointment</a>
+    <div class="buttons">
+        <!-- Show Available Properties Button -->
+        <a href="/properties" class="btn" th:text="'Show Available Properties'"></a>
+        <!-- Make an Appointment Button -->
+        <a href="/appointments/new" class="btn" th:text="'Make an Appointment'"></a>
     </div>
 </div>
 </body>

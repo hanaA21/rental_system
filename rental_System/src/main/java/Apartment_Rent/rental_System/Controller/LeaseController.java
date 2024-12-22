@@ -1,11 +1,7 @@
 package Apartment_Rent.rental_System.Controller;
 
-import Apartment_Rent.rental_System.Service.CustomerService;
 import Apartment_Rent.rental_System.Service.LeaseService;
-import Apartment_Rent.rental_System.Service.PropertyService;
-import Apartment_Rent.rental_System.entity.Customer;
 import Apartment_Rent.rental_System.entity.Lease;
-import Apartment_Rent.rental_System.entity.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -72,8 +68,9 @@ public class LeaseController {
      * @return List of leases.
      */
     @GetMapping
-    public ResponseEntity<List<Lease>> getAllLeases() {
+    public String getAllLease(Model model) {
         List<Lease> leases = leaseService.getAllLeases();
-        return ResponseEntity.ok(leases);
+        model.addAttribute("leases", leases);
+        return "lease_list";
     }
 }

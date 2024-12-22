@@ -1,8 +1,6 @@
 package Apartment_Rent.rental_System.Controller;
 
-import Apartment_Rent.rental_System.Service.CustomerService;
 import Apartment_Rent.rental_System.Service.PropertyService;
-import Apartment_Rent.rental_System.entity.Customer;
 import Apartment_Rent.rental_System.entity.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/properties")
@@ -27,12 +23,12 @@ public class PropertyController {
     public String listProperties(Model model) {
         System.out.println("inside");
         model.addAttribute("properties", propertyService.getAllProperties());
-        return "Property_list";
+        return "property_list";
     }
     @GetMapping("/new")
     public String showPropertyForm(Model model) {
         model.addAttribute("property", new Property());
-        return "Property_form"; // Refers to property-form.html
+        return "property_form"; // Refers to property-form.html
     }
 
     @PostMapping("/save")

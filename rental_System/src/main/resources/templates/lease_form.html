@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lease Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+          //  background: url() no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .container {
+            width: 50%;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Create Lease</h1>
+    <form action="/leases/save" method="post">
+        <label for="leaseTerm">Lease Term (in months):</label>
+        <input type="number" id="leaseTerm" name="leaseTerm" placeholder="Enter lease term in months" required>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Active">Active</option>
+            <option value="Terminated">Terminated</option>
+        </select>
+
+        <label for="customerId">Customer:</label>
+        <select id="customerId" name="customerId" th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}" required>
+        </select>
+
+        <label for="propertyId">Property:</label>
+        <select id="propertyId" name="propertyId" th:each="property : ${properties}" th:value="${property.id}" th:text="${property.address}" required>
+        </select>
+
+        <button type="submit" class="btn">Create Lease</button>
+    </form>
+</div>
+</body>
+
+</html>

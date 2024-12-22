@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lease List</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Lease ID</th>
+        <th>Customer ID</th>
+        <th>Property ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Lease Term (Months)</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lease : ${leases}">
+        <td th:text="${lease.id}"></td>
+        <td th:text="${lease.customer.id}"></td>
+        <td th:text="${lease.property.id}"></td>
+        <td th:text="${lease.startDate}"></td>
+        <td th:text="${lease.endDate}"></td>
+        <td th:text="${lease.leaseTerm}"></td>
+        <td th:text="${lease.status}"></td>
+        <td>
+            <form th:action="@{'/leases/' + ${lease.id}}" method="post" style="display: inline;" onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
